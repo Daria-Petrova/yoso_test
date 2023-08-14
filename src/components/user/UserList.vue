@@ -18,28 +18,22 @@
 </template>
 
 <script>
-  export default{
+  export default {
+    props:['appList', 'userArray'],
+    emits:{deleteApplication: null, addNewApplication: null},
     data() {
       return {
-        userList: [{
-            userName: 'User1 Name1 Surname1',
-            userDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sint ducimus quo magni tempore.'
-          },
-          {
-            userName: 'User2 Name2 Surname2',
-            userDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sint ducimus quo magni tempore.'
-          }, 
-          {
-            userName: 'User3 Name3 Surname3',
-            userDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sint ducimus quo magni tempore.'
-          } 
-        ],
         selectedUser: null
       }
     },
     methods: {
       choseUser() {
 
+      }
+    },
+    computed:{
+      userList(){
+        return this.userArray
       }
     }
   }
@@ -90,7 +84,7 @@
   margin: 0 0 5px 0;
 }
 .user-data{
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
 }
 

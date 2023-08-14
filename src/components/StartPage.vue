@@ -13,7 +13,13 @@
       </div>
       <div class="main">
         <KeepAlive>
-          <component :is="current"></component>
+          <component 
+          :is="current"
+          :userArray="userList"
+          @addNewApplication="addApplication"
+          @deleteApplication="removeApplication"
+          :appList="applicationList"
+          ></component>
         </KeepAlive>
       </div>
       <div class="footer">
@@ -27,6 +33,7 @@ import UserPage from './user/UserPage.vue';
 import UserList from './user/UserList.vue';
 import ApplicationList from './application/ApplicationList.vue';
 import ApplicationForm from './application/ApplicationForm.vue';
+import users from '../assets/users';
 
 export default {
   name: "MainPage",
@@ -38,28 +45,49 @@ export default {
   },
   data(){
     return {
-      current: 'UserList',
+      current: 'user-list',
       formList: [
         { 
-          name: 'UserPage',
+          name: 'user-page',
           title: 'Страница пользователя'
         },
         { 
-          name: 'UserList',
+          name: 'user-list',
           title: 'Список пользователей'
         },
         { 
-          name: 'ApplicationList',
+          name: 'application-list',
           title: 'Список заявок'
         },
         { 
-          name: 'ApplicationForm',
+          name: 'application-form',
           title: 'Форма заявки'
-        },],
-      parentInformation: null
+        },
+      ],
+      applicationList: [],
+      appList: [],
+      userList: []
     }
   },
-  methods: {}
+  created(){
+    this.userList = JSON.parse(JSON.stringify(users));
+    const applicationsData = localStorage.getItem('application-list');
+    if (applicationsData) {
+      this.applicationList = JSON.parse(applicationsData);
+    }
+  },
+  methods: {
+    addApplication(newApplication){
+      this.applicationList.push(newApplication);
+      this.updateApplicationList(this.applicationList);
+    },
+    removeApplication(changedApplication){
+      this.updateApplicationList(changedApplication);
+    },
+    updateApplicationList(items){
+      localStorage.setItem('application-list', JSON.stringify(items));
+    }
+  }
 }
 
 </script>

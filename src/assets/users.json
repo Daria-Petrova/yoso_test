@@ -1,0 +1,17 @@
+[
+  {
+    "userId": "001",
+    "userName": "Ray Bradbury",
+    "userDescription": "One of the most celebrated 20th-century American writers, he worked in a variety of modes, including fantasy, science fiction, horror, mystery, and realistic fiction."
+  },
+  {
+    "userId": "002",
+    "userName": "Alfred Hitchcock",
+    "userDescription": "English film director and producer. He is widely regarded as one of the most influential figures in the history of cinema."
+  }, 
+  {
+    "userId": "003",
+    "userName": "William Shakespeare",
+    "userDescription": "English playwright, poet and actor. He is widely regarded as the greatest writer in the English language and the worlds pre-eminent dramatist."
+  } 
+]
