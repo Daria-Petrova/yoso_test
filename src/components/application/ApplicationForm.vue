@@ -1,7 +1,7 @@
 <template>
   <div class="form-wrapper">
     <form  class="form" action="#" method="post">
-      <div class="form-item">
+      <div class="form-item" v-if="!tempUser">
         <label class="form-label">
           <p class="label">Выберите пользователя</p>
           <select class="form-select" v-model="selectedUser">
@@ -41,6 +41,15 @@
 import users from '../../assets/users.json';
 
 export default {
+  props:{
+    userForApplication:{
+      type: Object,
+      required: false,
+      default(){
+        return null
+      }
+    } 
+  },
   emits:{
     addNewApplication: null
   },
@@ -50,11 +59,17 @@ export default {
       phone: '',
       email: '',
       applicationText: '',
-      userList: []
+      userList: [],
+      tempUser: null
       }
   },
   created() {
     this.userList = JSON.parse(JSON.stringify(users));
+    this.tempUser = JSON.parse(JSON.stringify(this.userForApplication));
+    if (this.tempUser) {
+      this.selectedUser = this.tempUser;
+    }
+    
   },
   methods: {
     addApplication(){
@@ -64,6 +79,7 @@ export default {
         email: this.email,
         applicationText: this.applicationText
       };
+      console.log(newApplication);
       this.$emit('addNewApplication', newApplication);
       this.cleanForm();
     },
@@ -73,7 +89,14 @@ export default {
       this.email = '';
       this.applicationText = '';
     }
-  }
+  },
+  // watch:{
+  //   userForApplication(){
+  //     if (this.tempUser !== null){
+  //       this.selectedUser = this.tempUser;
+  //     }
+  //   }
+  // }
 }
 </script>
 

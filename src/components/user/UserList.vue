@@ -12,8 +12,10 @@
         <h3 class="user-name">{{ user.userName }}</h3>
         <p class="user-data">{{ user.userDescription }}</p>
       </div>
-      <div class="user-btn-wrapper"><button class="user-btn">Подать заявку</button></div>
+      <div class="user-btn-wrapper">
+        <button @click="addApllicationWithUser(user.userId)" class="user-btn">Подать заявку</button></div>
     </li>
+    {{ selectedUser }}
   </ul>
 </template>
 
@@ -28,6 +30,11 @@ import users from '../../assets/users.json';
     computed:{
       userList(){
         return JSON.parse(JSON.stringify(users));
+      }
+    },
+    methods:{
+      addApllicationWithUser(id){
+        this.$router.push({name:'user-page', props: true , params:{ id : id}});
       }
     }
   }
@@ -51,7 +58,6 @@ import users from '../../assets/users.json';
   grid-template-columns: 60px auto auto;
   box-sizing: border-box;
   max-width: 600px;
-  cursor: pointer;
   border: 2px solid transparent;
 }
 
@@ -84,8 +90,5 @@ import users from '../../assets/users.json';
 .user-btn-wrapper{
   align-self: center;
 }
-.selected {
-  border: 2px #19a8ea solid;
-  border-radius: 5px;
-}
+
 </style>

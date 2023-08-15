@@ -1,22 +1,49 @@
 <template>
-  <div>
+  <div v-if="user">
     <div class="user-page">
       <div class="user-img"></div>
       <div class="user-info">
-        <h3 class="user-name">Name1 Surname1</h3>
-        <p class="user-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sint ducimus quo magni tempore.</p>
+        <h3 class="user-name">{{user[0].userName}}</h3>
+        <p class="user-data">{{user[0].userDescription}}</p>
       </div>
     </div>
-    <ApplicationForm />
+    <ApplicationForm :userForApplication="user[0]" @addNewApplication="add" />
   </div>
 </template>
 
 <script>
 import ApplicationForm from '../application/ApplicationForm.vue';
+import users from '../../assets/users.json';
 
 export default {
+  props:['id'],
+  emits:{
+    addNewApplication: null
+  },
+  data(){
+    return{ 
+      userId: '',
+      user: null,
+      userList: [],
+      userForApplication: null
+    }
+  },
   components: {
     ApplicationForm
+  },
+  created(){
+    this.userId = this.$route.params?.id;
+    this.userList = JSON.parse(JSON.stringify(users));
+  },
+  watch:{
+    userId(){
+      this.user = this.userList.filter(item => item.userId === this.userId);
+    }
+  },
+  methods:{
+    add(newApplication){
+      this.$emit('addNewApplication', newApplication);
+    }
   }
 }
 </script>

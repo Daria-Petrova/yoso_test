@@ -30,10 +30,6 @@ export default {
   data(){
     return {
       formList: [
-        // { 
-        //   name: 'user-page',
-        //   title: 'Страница пользователя'
-        // },
         { 
           name: 'user-list',
           title: 'Список пользователей'
@@ -60,6 +56,7 @@ export default {
   },
   methods: {
     addApplication(newApplication){
+      console.log('добавить');
       this.applicationList.push(newApplication);
       this.updateApplicationList(this.applicationList);
     },
