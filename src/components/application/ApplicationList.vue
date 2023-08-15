@@ -1,5 +1,5 @@
 <template>
-  <div v-if="applications.length">Список заявок
+  <div v-if="applications.length > 0">Список заявок
     <p>
       <button v-if="page > 1" @click="page = page-1">Назад</button>
       <button v-if="hasNextPage" @click="page = page+1">Вперёд</button>
@@ -30,7 +30,7 @@
 <script>
 
 export default {
-  props:['appList','userArray'],
+  props:['appList'],
   emits: {
     deleteApplication: null
   },
@@ -43,38 +43,37 @@ export default {
     }
   },
   created(){
-    this.applications = this.appList;
+    this.applications = structuredClone(this.appList);
   },
   methods: {
     deleteApplication(itemToRemove){
       this.applications =  this.applications.filter( item => item !== itemToRemove);
       this.$emit('deleteApplication', this.applications);
-    },
+    }
   },
   computed: {
     startIndex(){
-      return (this.page-1)*3;
+      return (this.page-1)*3; 
     },
     endIndex(){
       return this.page*3;
     },
     filteredList(){
-      return this.applications.filter(item => item.user?.userName.includes(this.filter));
+      return this.applications?.filter(item => item.user?.userName.includes(this.filter));
     },
     paginatedList(){
-      return this.filteredList.slice(this.startIndex, this.endIndex);
+      return this.filteredList?.slice(this.startIndex, this.endIndex);
     }, 
     hasNextPage(){
-      return this.filteredList.length > this.endIndex;
+      return this.filteredList?.length > this.endIndex;
     }
   },
   watch:{
     paginatedList(){
-      if (this.paginatedList.length === 0 && this.page > 1) {
+      if (this.paginatedList?.length === 0 && this.page > 1) {
         this.page = this.page-1;
       }
     }
   }
 }
-
 </script>

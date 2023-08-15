@@ -12,28 +12,22 @@
         <h3 class="user-name">{{ user.userName }}</h3>
         <p class="user-data">{{ user.userDescription }}</p>
       </div>
+      <div class="user-btn-wrapper"><button class="user-btn">Подать заявку</button></div>
     </li>
   </ul>
-  {{ selectedUser }}
 </template>
 
 <script>
+import users from '../../assets/users.json';
   export default {
-    props:['appList', 'userArray'],
-    emits:{deleteApplication: null, addNewApplication: null},
     data() {
       return {
         selectedUser: null
       }
     },
-    methods: {
-      choseUser() {
-
-      }
-    },
     computed:{
       userList(){
-        return this.userArray
+        return JSON.parse(JSON.stringify(users));
       }
     }
   }
@@ -54,17 +48,16 @@
   display: grid;
   gap: 10px;
   padding: 20px;
-  grid-template-columns: 60px auto;
-  width: 500px;
+  grid-template-columns: 60px auto auto;
   box-sizing: border-box;
-  max-width: 500px;
+  max-width: 600px;
   cursor: pointer;
   border: 2px solid transparent;
 }
 
-/* .user-item:hover{
-  background-color: #dedede;
-} */
+.user-item:hover{
+  background-color: #dae4fa;
+}
 
 .user-img {
   align-self: center;
@@ -88,6 +81,9 @@
   margin: 0;
 }
 
+.user-btn-wrapper{
+  align-self: center;
+}
 .selected {
   border: 2px #19a8ea solid;
   border-radius: 5px;

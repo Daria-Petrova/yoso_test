@@ -12,7 +12,6 @@
           </select>
         </label>
       </div>
-      {{ selectedUser }}
       <div class="form-item">
         <label class="form-label">
           <p class="label">Заполните номер телефона</p>
@@ -39,9 +38,9 @@
 </template>
 
 <script>
+import users from '../../assets/users.json';
 
 export default {
-  props: ['userArray'],
   emits:{
     addNewApplication: null
   },
@@ -55,7 +54,7 @@ export default {
       }
   },
   created() {
-    this.userList = this.userArray;
+    this.userList = JSON.parse(JSON.stringify(users));
   },
   methods: {
     addApplication(){

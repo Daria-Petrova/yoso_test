@@ -7,20 +7,15 @@
         <ul class="menu">
           <li class="menu-item" 
             v-for="item in formList" 
-            :key="item"
-            @click="current = item.name">{{ item.title }}</li>
+            :key="item"><router-link :to="{name: item.name }">{{ item.title }}</router-link>
+            </li>
         </ul>
       </div>
       <div class="main">
-        <KeepAlive>
-          <component 
-          :is="current"
-          :userArray="userList"
-          @addNewApplication="addApplication"
-          @deleteApplication="removeApplication"
-          :appList="applicationList"
-          ></component>
-        </KeepAlive>
+        <router-view 
+        @addNewApplication="addApplication"
+        @deleteApplication="removeApplication"
+        :appList="applicationList" />
       </div>
       <div class="footer">
         <p>all rights reserved</p>
@@ -29,28 +24,16 @@
 </template>
 
 <script>
-import UserPage from './user/UserPage.vue';
-import UserList from './user/UserList.vue';
-import ApplicationList from './application/ApplicationList.vue';
-import ApplicationForm from './application/ApplicationForm.vue';
-import users from '../assets/users';
 
 export default {
   name: "MainPage",
-  components: {
-        UserPage, 
-        UserList,
-        ApplicationList,
-        ApplicationForm
-  },
   data(){
     return {
-      current: 'user-list',
       formList: [
-        { 
-          name: 'user-page',
-          title: 'Страница пользователя'
-        },
+        // { 
+        //   name: 'user-page',
+        //   title: 'Страница пользователя'
+        // },
         { 
           name: 'user-list',
           title: 'Список пользователей'
@@ -70,7 +53,6 @@ export default {
     }
   },
   created(){
-    this.userList = JSON.parse(JSON.stringify(users));
     const applicationsData = localStorage.getItem('application-list');
     if (applicationsData) {
       this.applicationList = JSON.parse(applicationsData);
