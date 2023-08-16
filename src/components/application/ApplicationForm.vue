@@ -111,9 +111,12 @@ export default {
   },
   methods:{
     async addApplication(){
+      if ( !this.selectedUser && this.userForApplication) {
+          this.selectedUser = this.userForApplication;
+        }
       const result = await this.v$.$validate();
       if (!result) {
-        console.log('не валидная форма')
+        return
       }
       else {
         const newApplication = {

@@ -1,6 +1,6 @@
 <template>
   <div v-if="applications.length > 0" class="list-wrapper">
-    <div class="navigation-block">
+     <div class="navigation-block">
       <p class="navigation">
         <button 
           class="navigation-btn"
@@ -30,7 +30,7 @@
       </tbody>
     </table>
   </div>
-  <div v-else>
+  <div v-else class="no-list">
     <p>Заявки отсутствуют</p>
   </div>
 </template>
@@ -39,7 +39,11 @@
 const PAGE_SIZE = 3;
 
 export default {
-  props:['appList'],
+  props:{
+    appList:{
+      default: null
+    }
+  },
   emits: {
     deleteApplication: null
   },
@@ -88,6 +92,10 @@ export default {
 </script>
 
 <style>
+.no-list{
+  margin: 20px;
+  text-align: center;
+}
 
 .list-wrapper {
   margin: 0 auto;

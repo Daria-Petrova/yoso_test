@@ -60,6 +60,7 @@ export default {
       this.updateApplicationList(this.applicationList);
     },
     removeApplication(changedApplication){
+      this.applicationList = changedApplication;
       this.updateApplicationList(changedApplication);
     },
     updateApplicationList(items){
