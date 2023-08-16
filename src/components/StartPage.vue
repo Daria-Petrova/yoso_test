@@ -2,7 +2,7 @@
     <div class="main-wrapper">
       <div class="header">
         <a href="email:info@yoso.com" class="logo-link">
-        <img src="../assets/logo.png" width="90" height="30"  alt="YoSo logo">
+        <img src="../assets/logo.png" width="90" height="30" alt="YoSo logo">
         </a>
         <ul class="menu">
           <li class="menu-item" 
@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     addApplication(newApplication){
-      console.log('добавить');
       this.applicationList.push(newApplication);
       this.updateApplicationList(this.applicationList);
     },
@@ -95,7 +94,8 @@ export default {
   padding: 24px 60px;
   max-width: 1366px;
   width: 80%;
-  display: flex;
+  display: grid;
+  grid-template-columns: min-content auto;
   align-items: center;
   border-bottom: 1px solid #d5d5d5;
 }
@@ -117,13 +117,23 @@ export default {
   list-style: none;
 }
 
-.menu-item{
+.menu-item {
   padding: 0 12px;
   cursor: pointer;
 }
 
-.active{
-  background-color: aqua;
+a {
+  color: #000000;
+}
+
+.menu-item > a {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.router-link-active {
+  color: #3e7ee3;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 500px ) {

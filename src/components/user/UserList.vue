@@ -13,15 +13,19 @@
         <p class="user-data">{{ user.userDescription }}</p>
       </div>
       <div class="user-btn-wrapper">
-        <button @click="addApllicationWithUser(user.userId)" class="user-btn">Подать заявку</button></div>
+        <button @click="addApllicationWithUser(user.userId)" class="user-btn btn btn-small">Подать заявку</button></div>
     </li>
-    {{ selectedUser }}
   </ul>
 </template>
 
 <script>
 import users from '../../assets/users.json';
   export default {
+    props:{
+      appList:{
+        default: null
+      }
+    },
     data() {
       return {
         selectedUser: null
@@ -49,6 +53,7 @@ import users from '../../assets/users.json';
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .user-item {
