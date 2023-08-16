@@ -125,19 +125,20 @@ export default {
 }
 
 .app-text {
-  max-width: 500px;
+  max-width: 300px;
 }
+
 .list-table {
   margin: 0 auto;
+  max-width: 900px;
   word-wrap: break-word;
 }
+
 th , td {
   padding: 2px;
 }
 
-
-
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 900px) {
   .list-wrapper table thead {
     display: none;
   }
@@ -150,13 +151,25 @@ th , td {
   .list-wrapper table td  {
     display: flex;
     justify-content: space-between;
+    text-align: right;
   }
 
   .list-wrapper table td::before {
     content: attr(data-label);
     font-weight: bold;
     margin-right: 20px;
+    text-align: left;
+  }
+  .app-text {
+    max-width: none;
+  }
+  .list-wrapper{
+    padding: 0 20px;
+  }
+  th{
+    padding: 20px 0;
   }
 }
 
 </style>
+

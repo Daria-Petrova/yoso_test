@@ -120,6 +120,7 @@ export default {
 .menu-item {
   padding: 0 12px;
   cursor: pointer;
+  text-align: end;
 }
 
 a {
@@ -136,9 +137,17 @@ a {
   font-weight: 600;
 }
 
-@media screen and (max-width: 500px ) {
-    .header{
-        padding:10px 20px;
-    }
+@media screen and (max-width: 530px) {
+  .main{
+    margin: 0;
+  }
+  .header{
+    padding:30px 20px;
+    justify-content: space-around;
+  }
+  .menu{
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
 </style>

@@ -87,13 +87,23 @@ import users from '../../assets/users.json';
   line-height: 24px;
   margin: 0 0 5px 0;
 }
-.user-data{
+.user-data {
   font-size: 14px;
   margin: 0;
 }
 
 .user-btn-wrapper{
   align-self: center;
+}
+
+@media screen and (max-width: 530px){
+  .user-name{
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .user-data{
+    font-size: 10px;
+  }
 }
 
 </style>

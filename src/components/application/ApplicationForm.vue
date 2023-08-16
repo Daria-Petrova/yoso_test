@@ -206,4 +206,9 @@ export default {
   color: red;
 }
 
+@media screen and (max-width: 530px) {
+  .form{
+    margin: 0 15px;
+  }
+}
 </style>

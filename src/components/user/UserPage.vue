@@ -16,7 +16,7 @@ import ApplicationForm from '../application/ApplicationForm.vue';
 import users from '../../assets/users.json';
 
 export default {
-  props:['id'],
+  props:['id', 'appList'],
   emits:{
     addNewApplication: null
   },
@@ -68,4 +68,16 @@ export default {
   height: 200px;
   background: url(../../assets/user_lg.png) no-repeat center;
 }
+
+@media screen and (max-width: 530px){
+  .user-page {
+    padding: 0 20px;
+  }
+  .user-page >.user-img {
+    width: 100px; 
+    height: 100px;
+    background-size:contain ;
+}
+}
+
 </style>
