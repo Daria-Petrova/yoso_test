@@ -2,7 +2,7 @@
   <div class="form-wrapper">
     <form  class="form" action="#" method="post">
       <div class="form-item" 
-       v-if="!tempUser">
+        v-if="!tempUser">
         <label class="form-label">
           <p class="label">Выберите пользователя<span class="error"> &#9733;</span></p>
           <select 
@@ -20,8 +20,8 @@
         <label class="form-label">
           <p class="label">Заполните номер телефона<span class="error"> &#9733;</span></p>
           <input class="form-input" 
-          v-model="phone"
-          type="tel">
+            v-model="phone"
+            type="tel">
         </label>
         <span class="error"  v-for="error of v$.phone.$errors" :key="error.$uid">
           <template v-if="error.$validator === 'numeric'">Используйте цифры</template>
@@ -33,8 +33,8 @@
         <label class="form-label">
           <p class="label">Заполните e-mail<span class="error"> &#9733;</span></p>
           <input class="form-input" 
-          v-model="email"
-          type="email">
+            v-model="email"
+            type="email">
         </label>
         <span class="error"  v-for="error of v$.email.$errors" :key="error.$uid">
           <template v-if="error.$validator === 'email'">Адрес введен не корректно</template>
@@ -45,8 +45,8 @@
         <label class="form-label">
           <p class="label">Текст заявки<span class="error"> &#9733;</span></p>
           <textarea class="form-input textarea"
-          v-model="applicationText"
-          type="text"></textarea>
+            v-model="applicationText"
+            type="text"></textarea>
         </label>
         <span class="error"  v-for="error of v$.applicationText.$errors" :key="error.$uid">
           <template v-if="error.$validator === 'maxLength'">Длина заявки превышает {{ error.$params.max}} символов</template>
@@ -61,12 +61,12 @@
 </template>
 
 <script>
-import users from '../../assets/users.json';
+import users from '../../users.json';
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, maxLength, numeric } from '@vuelidate/validators'
 
 export default {
-  setup () {
+  setup(){
     return { v$: useVuelidate() }
   },
   props:{
@@ -84,7 +84,7 @@ export default {
   emits:{
     addNewApplication: null
   },
-  data() {
+  data(){
     return {
       selectedUser: '',
       phone: null,
@@ -102,14 +102,14 @@ export default {
       applicationText: { required, maxLength: maxLength(200), $autoDirty: true}
     }
   },
-  created() {
+  created(){
     this.userList = JSON.parse(JSON.stringify(users));
     this.tempUser = JSON.parse(JSON.stringify(this.userForApplication));
     if (this.tempUser) {
       this.selectedUser = this.tempUser;
     } 
   },
-  methods: {
+  methods:{
     async addApplication(){
       const result = await this.v$.$validate();
       if (!result) {
@@ -117,16 +117,15 @@ export default {
       }
       else {
         const newApplication = {
-        user: structuredClone(this.selectedUser),
-        phone: this.phone,
-        email: this.email,
-        applicationText: this.applicationText
-      };
+          user: structuredClone(this.selectedUser),
+          phone: this.phone,
+          email: this.email,
+          applicationText: this.applicationText
+        };
         this.$emit('addNewApplication', newApplication);
         this.cleanForm();
         this.v$.$reset();
       }
-      
     },
     cleanForm(){
       this.selectedUser = '';
@@ -141,7 +140,7 @@ export default {
 
 <style>
 
-.form-wrapper{
+.form-wrapper {
   max-width: 540px;
   width: 100%;
   margin: 20px auto;
@@ -195,13 +194,13 @@ export default {
   margin: 0;
 }
 
-.label{
+.label {
   margin: 0;
   padding-bottom: 5px;
   font-size: 14px;
 }
 
-.error{
+.error {
   font-size: 10px;
   color: red;
 }

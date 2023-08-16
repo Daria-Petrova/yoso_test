@@ -3,10 +3,10 @@
     <div class="navigation-block">
       <p class="navigation">
         <button 
-        class="navigation-btn"
-        v-if="page > 1" 
-        @click="page = page-1"> &#706;</button>
-        Текущая страница: {{ page }}
+          class="navigation-btn"
+          v-if="page > 1" 
+          @click="page = page-1"> &#706;</button>
+          Текущая страница: {{ page }}
         <button 
           class="navigation-btn"
           v-if="hasNextPage" 
@@ -89,20 +89,19 @@ export default {
 
 <style>
 
-.list-wrapper{
+.list-wrapper {
   margin: 0 auto;
   max-width: 900px;
   width: 100%;
-  /* background-color: aquamarine; */
 }
 
-.navigation-block{
+.navigation-block {
   display: flex;
   justify-content: center;
   padding: 20px 0;
 }
 
-.navigation{
+.navigation {
   padding: 5px 10px 2px;
   background-color: #ffffff;
   border: none;
@@ -119,7 +118,7 @@ export default {
   cursor: pointer;
 }
 
-.navigation-btn:hover{
+.navigation-btn:hover {
   background-color: #b1cbf4;
   color: #ffffff;
 }
@@ -134,7 +133,7 @@ export default {
   word-wrap: break-word;
 }
 
-th , td {
+th, td {
   padding: 2px;
 }
 
@@ -160,16 +159,18 @@ th , td {
     margin-right: 20px;
     text-align: left;
   }
+
   .app-text {
     max-width: none;
   }
-  .list-wrapper{
+
+  .list-wrapper {
     padding: 0 20px;
   }
-  th{
+
+  th {
     padding: 20px 0;
   }
 }
-
 </style>
 

@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -39,14 +39,14 @@ export default {
   padding: 5px 15px;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #3e7ee3;
   color: #ffffff;
   transition: background-color 0.3s,
               color 0.3s;
 }
 
-.btn:focus{
+.btn:focus {
   background-color: #3e7ee3;
   color: #ffffff; 
 }

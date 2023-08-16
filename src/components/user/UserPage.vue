@@ -7,13 +7,13 @@
         <p class="user-data">{{user[0].userDescription}}</p>
       </div>
     </div>
-    <ApplicationForm :userForApplication="user[0]" @addNewApplication="add" />
+    <application-form :userForApplication="user[0]" @addNewApplication="add" />
   </div>
 </template>
 
 <script>
 import ApplicationForm from '../application/ApplicationForm.vue';
-import users from '../../assets/users.json';
+import users from '../../users.json';
 
 export default {
   props:['id', 'appList'],
@@ -73,11 +73,11 @@ export default {
   .user-page {
     padding: 0 20px;
   }
+
   .user-page >.user-img {
     width: 100px; 
     height: 100px;
     background-size:contain ;
+  }
 }
-}
-
 </style>

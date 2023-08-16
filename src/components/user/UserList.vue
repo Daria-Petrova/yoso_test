@@ -1,9 +1,7 @@
 <template>
   <ul class="user-list">
     <li class="user-item"
-      :class="{
-        'selected': selectedUser === user
-      }"
+      :class="{'selected': selectedUser === user}"
       @click="selectedUser = user" 
       v-for="(user, index) in userList" 
       :key="index">
@@ -19,32 +17,30 @@
 </template>
 
 <script>
-import users from '../../assets/users.json';
-  export default {
-    props:{
-      appList:{
-        default: null
-      }
-    },
-    data() {
-      return {
-        selectedUser: null
-      }
-    },
-    computed:{
-      userList(){
-        return JSON.parse(JSON.stringify(users));
-      }
-    },
-    methods:{
-      addApllicationWithUser(id){
-        this.$router.push({name:'user-page', props: true , params:{ id : id}});
-      }
+import users from '../../users.json';
+export default {
+  props:{
+    appList:{
+      default: null
+    }
+  },
+  data() {
+    return {
+      selectedUser: null
+    }
+  },
+  computed:{
+    userList(){
+      return JSON.parse(JSON.stringify(users));
+    }
+  },
+  methods:{
+    addApllicationWithUser(id){
+      this.$router.push({name:'user-page', props: true , params:{ id : id}});
     }
   }
+}
 </script>
-
-
 
 <style>
 .user-list {
@@ -66,7 +62,7 @@ import users from '../../assets/users.json';
   border: 2px solid transparent;
 }
 
-.user-item:hover{
+.user-item:hover {
   background-color: #dae4fa;
 }
 
@@ -92,18 +88,18 @@ import users from '../../assets/users.json';
   margin: 0;
 }
 
-.user-btn-wrapper{
+.user-btn-wrapper {
   align-self: center;
 }
 
 @media screen and (max-width: 530px){
-  .user-name{
+  .user-name {
     font-size: 16px;
     line-height: 20px;
   }
-  .user-data{
+
+  .user-data {
     font-size: 10px;
   }
 }
-
 </style>

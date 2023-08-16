@@ -1,26 +1,26 @@
 <template>
-    <div class="main-wrapper">
-      <div class="header">
-        <a href="email:info@yoso.com" class="logo-link">
-        <img src="../assets/logo.png" width="90" height="30" alt="YoSo logo">
-        </a>
-        <ul class="menu">
-          <li class="menu-item" 
-            v-for="item in formList" 
-            :key="item"><router-link :to="{name: item.name }">{{ item.title }}</router-link>
-            </li>
-        </ul>
-      </div>
-      <div class="main">
-        <router-view 
-        @addNewApplication="addApplication"
-        @deleteApplication="removeApplication"
-        :appList="applicationList" />
-      </div>
-      <div class="footer">
-        <p>all rights reserved</p>
-      </div>
+  <div class="main-wrapper">
+    <div class="header">
+      <a href="email:info@yoso.com" class="logo-link">
+      <img src="../assets/logo.png" width="90" height="30" alt="YoSo logo">
+      </a>
+      <ul class="menu">
+        <li class="menu-item" 
+          v-for="item in formList" 
+          :key="item"><router-link :to="{name: item.name }">{{ item.title }}</router-link>
+        </li>
+      </ul>
     </div>
+    <div class="main">
+      <router-view 
+      @addNewApplication="addApplication"
+      @deleteApplication="removeApplication"
+      :appList="applicationList" />
+    </div>
+    <div class="footer">
+      <p>all rights reserved</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -54,7 +54,7 @@ export default {
       this.applicationList = JSON.parse(applicationsData);
     }
   },
-  methods: {
+  methods:{
     addApplication(newApplication){
       this.applicationList.push(newApplication);
       this.updateApplicationList(this.applicationList);
@@ -138,14 +138,16 @@ a {
 }
 
 @media screen and (max-width: 530px) {
-  .main{
+  .main {
     margin: 0;
   }
-  .header{
+
+  .header {
     padding:30px 20px;
     justify-content: space-around;
   }
-  .menu{
+  
+  .menu {
     flex-direction: column;
     align-items: flex-end;
   }
